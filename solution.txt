@@ -1,7 +1,8 @@
 function apartmentHunting(blocks, reqs) {
   let mindistance = reqs.map((item) => getmindist(item,blocks))
   let maxdistance = getmaxdist(mindistance, blocks,reqs)
-  return maxdistance.indexOf(Math.min(...maxdistance))
+  let ans= maxdistance.indexOf(Math.min(...maxdistance))
+  return ans
 }
 
 function getmaxdist(arr,blocks,reqs){
