@@ -1,0 +1,13 @@
+Approach:
+
+Traverse through the request array and find the minimum distance between each request to other blocks,
+then find the maximum of all the distance in each array. Now return the index of minmum of the max elements from the array.
+
+
+Details:
+
+getmindist()- >  returns a array of arraylist which contains the distance between the request and each blocks
+
+getmaxdist()-> returns the maximum value in each array list of every request element and returns the array.
+
+apartmenthinding()-> the main function which returns the answer - which returns the index of the minimum of the all maximum values from the array returned from getmaxdistance()

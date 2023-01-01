@@ -1,0 +1,42 @@
+function apartmentHunting(blocks, reqs) {
+  let mindistance = reqs.map((item) => getmindist(item,blocks))
+  let maxdistance = getmaxdist(mindistance, blocks,reqs)
+  return maxdistance.indexOf(Math.min(...maxdistance))
+}
+
+function getmaxdist(arr,blocks,reqs){
+let maxDistance = []
+  for(let i = 0; i < blocks.length; i++){
+      let currmax = -1000000
+      for(let j = 0; j < arr.length; j++){
+          currmax = Math.max(currmax, arr[j][i])
+      }
+      
+      maxDistance[i] = currmax
+  }
+  return maxDistance
+}
+
+function getmindist(item, blocks){
+  let result = blocks.map((el) => 1000000)
+  let current = 1000000
+  for(let i = 0; i < blocks.length; i++){
+    let currblock = blocks[i]
+    if(currblock[item]==true) current = i
+    result[i] = Math.abs(current - i)
+  }
+  
+  for(let j = blocks.length - 1; j >= 0; j--){
+    let currblock = blocks[j]
+    if(currblock[item]==true) current = j
+    result[j] = Math.min(result[j], Math.abs(current - j))
+  }
+  return result
+}
+
+const finalanswer= apartmentHunting(blocks, reqs)
+console.log(finalanswer);
+
+// Do not edit the line below.
+exports.apartmentHunting = apartmentHunting;
+
